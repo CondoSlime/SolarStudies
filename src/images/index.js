@@ -1,0 +1,14 @@
+export const Plant1 = require('./Plant1.png');
+export const Plant2 = require('./Plant2.png');
+export const Plant3 = require('./Plant3.png');
+export const Plant4 = require('./Plant4.png');
+export const particle = require('./Particle.png');
+export const star = require('./star.png');
+export const starGif = require('./starGif.gif');
+export const starGifBlack = require('./starGifBlack.gif');
+export const starBlue = require('./starBlue.png');
+export const starGray = require('./starGray.png');
+export const starRed = require('./starRed.png');
+export const starBlack = require('./starBlack.png');
+export const bigStar = require('./bigStar.png');
+export const starBackground = require('./starBackground.png');

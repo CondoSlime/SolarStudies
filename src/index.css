@@ -1,0 +1,529 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mainMenu {
+	--invTileSize:50px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body, html, #root, #mainMenu, .display{
+	width:100%;
+	height:100%;
+	max-height:100%;
+	max-width:100%;
+	overflow:hidden;
+}
+
+*{
+  box-sizing:border-box;
+  user-select:none;
+}
+
+.centerText{
+	justify-content: space-around;
+	align-items: center;
+	display:flex;
+}
+.full{
+	height:100%;
+	width:100%;
+}
+
+.scroll1::-webkit-scrollbar {
+	width: 10px;
+}
+.scroll1::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey; 
+	border-radius: 10px;
+}
+.scroll1::-webkit-scrollbar-thumb {
+	background: #333333; 
+	border-radius: 10px;
+}
+.scroll1::-webkit-scrollbar-thumb:hover {
+	background: #222222;
+}
+
+.dragging {
+    position: fixed;
+	pointer-events:none;
+}
+.dragging > *{
+	width:100%;
+	height:100%;
+}
+.energizerTile.dragged{
+	background: radial-gradient(#000000 60%, #3444f5 100%);
+}
+.gardenTile.dragged{
+	background: radial-gradient(#664400 30%, #3444f5 100%);
+}
+.inventorySlot.dragged{
+	background: radial-gradient(#000000 50%, #3444f5 100%);
+}
+.equipSlot.dragged{
+	background: radial-gradient(transparent 50%, #3444f5 100%);
+}
+.clickable{
+	cursor:pointer;
+}
+.triangle{
+	width:0;
+	height:0;
+	border-color:transparent;
+	border-style:solid;
+}
+.component{
+	aspect-ratio:1;
+	position:absolute;
+	pointer-events:none;
+}
+.component > div{
+	width:100%;
+	height:100%;
+}
+.component.up{
+	left:50%;
+	top:0;
+	transform:translate(-50%);
+}
+.component.right{
+	top:50%;
+	right:0;
+	transform:translate(0, -50%);
+}
+.component.down{
+	left:50%;
+	bottom:0;
+	transform:translate(-50%);
+}
+.component.left{
+	top:50%;
+	left:0;
+	transform:translate(0, -50%);
+}
+
+#root{
+	overflow:hidden;
+	font-family:'Verdana';
+}
+
+#mainMenu{
+  display:flex;
+}
+
+#leftMenu{
+	background:#666666;
+	position:relative;
+	width:10%
+}
+#middleMenu{
+	background:#777777;
+	position:relative;
+	width:10%
+}
+#rightMenu{
+	background:#888888;
+	position:relative;
+	width:80%
+}
+
+.mainButton{
+	width:100%;
+	height:40px;
+	font-size:12px;
+	margin-top:2px;
+}
+.button1{
+	background:#AAAAAA;
+	color:#000000;
+	border:1px solid black;
+	justify-content: space-around;
+	align-items: center;
+	display:flex;
+	cursor:pointer;
+}
+
+.btnDisabled{
+	background:#666666 !important;
+}
+.menuButton{
+	width:100%;
+	background:#AAAAAA;
+	color:#000000;
+	height:35px;
+	font-size:12px;
+	border:1px solid black;
+	justify-content: space-around;
+	align-items: center;
+	display:flex;
+	margin-top:1%;
+	cursor:pointer;
+}
+.menuButton2{
+	background:#AAAAAA;
+	color:#000000;
+	font-size:12px;
+	border:1px solid black;
+	justify-content: space-around;
+	align-items: center;
+	display:flex;
+	cursor:pointer;
+}
+.middleMenu{
+	width:100%;
+	height:100%;
+}
+
+.resDisplay{
+	width:100%;
+	height:30px;
+	color: #000000;
+	border:1px solid black;
+	cursor:default;
+	position:relative;
+	margin-top:2px;
+	border-radius:3px;
+}
+.resDisplay > *{
+	position:absolute;
+}
+.resDisplay span{
+	width:100%;
+	height:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.infoText{
+	font-size:20px;
+	text-align:center;
+}
+
+.shopContainer{
+	display: flex;
+	flex-wrap:wrap;
+}
+
+.shopUpgradeContainer{
+	width:200px;
+	height:70px;
+	margin:4px;
+	padding:4px;
+	position:relative;
+}
+
+.shopButton{
+	height:100%;
+	width:100%;
+	background:#AAAAAA;
+	color:#000000;
+	border:1px solid black;
+	border-radius:5px;
+	cursor:pointer;
+}
+
+.shopButtonText{
+	font-size:16px;
+}
+
+.energizerContainer{
+	position:absolute;
+	left: 50%;
+	top: 50%;
+    transform: translate(-50%, -50%);
+}
+.energizerRow{
+	display:flex;
+	flex-direction:row;
+	align-items:flex-start;
+	justify-content:flex-start;
+}
+.energizerTile{
+	background-color:black;
+	border:1px solid #888888;
+	color:white;
+	position:relative;
+
+	max-width:10vw;
+	max-height:10vh;
+	min-width:10vw;
+	min-height:10vh;
+	justify-content: space-around;
+	align-items: center;
+	display:flex;
+}
+.energizerModule{
+	height:5vh;
+	width:5vh;
+	aspect-ratio: 1 / 1;
+	background:black;
+}
+.energizerGhost{
+	height: 10vh;
+	width: 10vw;
+	background:black;
+	color: white;
+}
+
+.gardenContainer{
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	height:100%;
+	padding: 20px 20px 20px 20px;
+}
+.gardenRow{
+	display:flex;
+	margin-top:4px;
+	margin-bottom:4px;
+	flex: 1;
+}
+.gardenRow > *{
+	flex:1;
+}
+.gardenTile{
+	border:1px solid black;
+	background:#664400;
+	margin-left:1%;
+	margin-right:1%;
+	min-height:40px;
+	min-width:40px;
+}
+.gardenTile .GTBackground{
+	height:80%;
+	width:80%;
+	background:#123456;
+	/*background:#664400;*/
+}
+.gardenTile .GTInner{
+	height:80%;
+	width:80%;
+	background:#55DD88;
+	color: #000000;
+	border:3px solid black;
+	background-size:100% 100%;
+}
+.gardenTile:not(.disabled) .GTInner{
+	cursor:pointer;
+}
+.gardenTile.disabled .GTInner{
+	background:#666666;
+}
+.gardenTile .GTInnerBackground{
+	height:70%;
+	width:70%;
+	pointer-events:none;
+	background-size:100% 100%;
+}
+.gardenTile .GTPlant{
+	transform: translate(-50%, -50%);
+	font-size:30px;
+	color: #000000;
+	pointer-events:none;
+}
+.compendiumPlantList{
+	display:flex;
+	flex-direction:column;
+	width:200px;
+	height:90%;
+	border:2px solid black;
+	overflow-y:auto;
+	margin-left:5px;
+}
+
+.dungeonScreen{
+	position:absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.dungeonRow{
+	display:flex;
+	flex-direction:row;
+	align-items:flex-start;
+	justify-content:flex-start;
+}
+.dungeonTile{
+	background-color:black;
+	border:1px solid #777777;
+	width:3vw;
+	height:3vw;
+	color:white;
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.combatInfo{
+	width:100%;
+	flex:1;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.combatInfoInner{
+	width:40%;
+	height:40%;
+	font-size:20px;
+	display:flex;
+	flex-direction:column;
+}
+.combatDisplay{
+	height:50%;
+	display:flex;
+	border-bottom:1px solid black;
+}
+
+.healthBar{
+	width:100%;
+	height:30px;
+	border:1px solid black;
+	margin-bottom:0.1vh;
+	position:relative;
+}
+.healthBarInner{
+	width:0;
+	height:100%;
+	position:absolute;
+}
+.healthBarText{
+	width:100%;
+	position:absolute;
+	text-align:center;
+}
+
+.forgeDisplay{
+	border:6px solid #666666;
+	height:100%;
+	max-width:20vw;
+	min-width:20vw;
+	flex:1;
+}
+
+.invUpper{
+	width:200%;
+	display:flex;
+	position:relative;
+}
+.invUpper > *{
+	position:relative;
+	flex:1;
+	max-width:100%;
+	width:100%;
+	height:100%;
+}
+.test{
+	left:10px;
+	transition:all 1s ease-in-out;
+}
+.test-enter{
+	left:100px;
+	transition:all 1s ease-in-out;
+}
+.invSlot{
+	width:calc(100%/15);
+	height:calc(100%/6);
+	background-color:black;
+	border:1px solid #777777;
+	align-self: flex-start;
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	cursor:pointer;
+}
+.invSlot *{
+	cursor:pointer;
+	pointer-events:none;
+}
+.invSlot.selected{
+	background-color:#222244;
+}
+.equipSlot{
+	border:1px solid black;
+	height:var(--invTileSize);
+	aspect-ratio: 1 / 1;
+	float:left;
+	overflow:hidden;
+	cursor:pointer;
+}
+.equipSlot *{
+	cursor:pointer;
+	pointer-events:none;
+	width:100%;
+	height:100%;
+	display:flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.equipSlot.selected{
+	background-color:#222244;
+}
+.equipment > .weapons{
+	transform:rotate(45deg);
+	position:absolute;
+	left:calc(var(--invTileSize) * (sqrt(2) - 1));
+	top:calc(var(--invTileSize) * (sqrt(2) - 1));
+}
+.equipment > .weapons > div > *{
+	transform:rotate(-45deg);
+}
+.equipment > .armor{
+	position:absolute;
+	left:calc(1% + var(--invTileSize) * 2 * sqrt(2));
+}
+.equipment > .trinkets{
+	position:absolute;
+	left:calc(2% + var(--invTileSize) * 2 * sqrt(2) + (4 * var(--invTileSize)));
+}
+
+.diamond{
+	transform:rotate(45deg);
+}
+.diamond > *{
+	transform:rotate(-45deg);
+}
+
+.equipOptions{
+	display:flex;
+	width:100%;
+	height:5%;
+}
+.equipOptions > *{
+	max-height:100%;
+}
+.equipOptions > div{
+	width:200px;
+}
+
+.inventory{
+	display:flex;
+	flex-direction:column;
+	align-items:stretch;
+	gap:2px;
+}
+.inventory > div{
+	display:flex;
+	flex-grow:1;
+	flex:1 1 0px;
+	gap:2px;
+}
+.inventorySlot{
+	background-color:black;
+	border:1px solid #666666;
+	flex:1 1 0px;
+	color:white;
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	cursor:pointer;
+}

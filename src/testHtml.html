@@ -1,0 +1,278 @@
+{/*<meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        */}
+        {/*<svg id='testSvg' style="position:absolute; z-index:9999; pointer-events:none; width:100%; height:100%;">
+			    <line stroke="black" stroke-width="1%" x1="10%" x2="20%" y1="70%" y2="80%"></line>
+		    </svg>
+        elements in comments are added by the JS script. Usually done in loops to add multiple elements.
+		    values in [brackets] are variable when added.*/}
+        <div id="testDot" style={{boxSizing: 'border-box', border: '1px solid black', position: 'absolute', width: '2vh', height: '2vh', textAlign: 'center', display: 'none'}}>.</div>
+        <div id="main" className="main">
+          <div id="leftMenu" className="leftMenu">
+            <div className="resourceDisplay V1" unselectable="on">
+              <div className="cooldowns">
+                <div id="clickCooldown" style={{background: '#777777', width: '50%'}} />
+                <div id="moveCooldown" style={{background: '#888888'}} />
+                <div id="keyCooldown" style={{background: '#999999'}} />
+              </div>
+              <span id="showPower">0</span>
+            </div>
+            <div className="menuButton" id="shop">Shop</div>
+            <div className="menuButton" id="garden" style={{display: 'none'}}>Garden</div>
+            <div className="menuButton" id="treasury" style={{display: 'none'}}>Treasury</div>
+            <div className="menuButton" id="dungeon" style={{display: 'none'}}>Dungeon</div>
+            <div className="menuButton" id="stars" style={{display: 'none', backgroundColor: '#AAAACC'}}>Stars</div>
+            <div className="menuButton" id="stats">Stats</div>
+            <div className="menuButton" id="options">Options</div>
+            <div className="menuButton" id="help">Help</div>
+            <div className="menuButton" id="save">Save</div>
+            <div className="menuButton" id="devButton" style={{background: '#000000', color: '#DDDDDD'}}>DevButton</div>
+            <div className="menuButton" id="activateButton" style={{fontSize: '12px'}}>Activate!</div>
+            <input id="testInput" style={{width: '100%', height: '5vh'}} />
+          </div>
+          <div id="middleMenu" className="middleMenu">
+            <div id="welcomeMenu" className="display" />
+            <div id="shopMenu" style={{display: 'none'}}>
+              <div className="menuButton" id="shopBuyAmountButton">Change buy amount</div>
+              <div className="infoText center" id="shopBuyAmountText">X1</div>
+              <div className="resourceDisplay V1"><span id="shopKnowledge">0</span></div>
+              <div className="resourceDisplay V1"><span id="shopShards">0</span></div>
+            </div>
+            <div id="treasuryMenu" style={{display: 'none'}}>
+              <div className="menuButton V2" id="treasuryDigsite">Digsite</div>
+              <div className="menuButton V2" id="treasuryWorkbench">Workbench</div>
+              <div className="resourceDisplay V1"><span id="radarStat">0</span></div>
+              <div className="resourceDisplay V1"><span id="shardStat">0</span></div>
+              <div className="menuButton" id="treasuryOpenAll">Open all Treasures (0)</div>
+              <div className="resourceDisplay V1"><span id="treasuryComets">0</span></div>
+              <div className="resourceDisplay V1"><span id="treasuryKeys">0</span></div>
+              <div className="resourceDisplay V1"><span id="treasuryRevealKeys">0</span></div>
+              <div id="treasureAmount">
+                {/*<div class='resourceDisplay'><span id='treasury[Quartz]'>[Quartz]: 0</span></div>*/}
+              </div>
+              <div id="treasuryInfo" />
+            </div>
+            <div id="gardenMenu" style={{display: 'none'}}>
+              <div className="menuButton V2" id="gardenInspect">Inspect</div>
+              <div className="menuButton V2" id="gardenHarvest">Harvest</div>
+              <div className="menuButton V2" id="gardenSwap">Swap</div>
+              <div className="menuButton V2" id="gardenProtect">Protect</div>
+              <div className="menuButton V2" id="gardenToGarden" style={{background: '#228822'}}>Garden</div>
+              <div className="menuButton V2" id="gardenToStorage" style={{background: '#886644'}}>Storage</div>
+              <div className="menuButton V2" id="gardenToAlmanac" style={{backgroundColor: '#664422'}}>Almanac</div>
+            </div>
+            <div id="dungeonMenu" style={{display: 'none'}}>
+              <div className="resourceDisplay V1"><span id="dungeonFloor">Floor: 0</span></div>
+              <div className="menuButton V2" id="dungeonToDungeon">Dungeon</div>
+              <div className="menuButton V2" id="dungeonToInventory">Inventory</div>
+            </div>
+            <div id="starsMenu" style={{display: 'none'}}>
+              <div className="menuButton V2" id="starsToMain">to main</div>
+              <div className="menuButton" id="starsBuyAmountButton">Change buy amount</div>
+              <div className="infoText center" id="starsBuyAmountText">X1</div>
+              {/*<div class='resourceDisplay V1'><span id='[blueCrystal]Amount'>[Blue Crystal]: 0</span></div>*/}
+            </div>
+            <div id="statsMenu" style={{display: 'none'}}>
+              <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
+                <div className="menuButton V2" id="statsToMain">Stats</div>
+                <div className="menuButton V2" id="statsToBreakdown">Stat breakdown</div>
+                <div className="menuButton V2" id="statsToFeatureBreakdown">Feature breakdown</div>
+                <div style={{flex: 1}}>
+                  <div className="breakdownList scrollbar" id="statsBreakdownList" style={{display: 'none'}} />
+                  <div className="breakdownList scrollbar" id="statsFeatureBreakdownList" style={{display: 'none'}} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="rightMenu" className="rightMenu">
+            <div id="welcomeDisplay">
+              <div id="testMove1" style={{boxSizing: 'border-box', top: '40%', left: '50%', height: '200px', width: '300px', border: '10px solid black', borderTop: '25px solid black', position: 'absolute', background: '#123456', userSelect: 'none'}}>
+                <div id="testMove2" style={{border: '10px solid gray', height: '30px', width: '30px', backgroundColor: 'blue', boxSizing: 'border-box', position: 'absolute', left: '0.99%'}} />
+              </div>
+              <div id="testMove3" style={{boxSizing: 'border-box', top: '40%', left: '10%', height: '200px', width: '100px', border: '10px solid black', borderBottom: '25px solid black', borderRight: '25px solid black', position: 'absolute', background: '#123456', userSelect: 'none'}}>
+                <div id="testMove4" style={{border: '4px solid #111111', height: '240px', width: '250px', boxSizing: 'border-box'}} />
+              </div>
+              <div id="testMove5" style={{boxSizing: 'border-box', top: '5%', left: '10%', height: '150px', width: '200px', position: 'absolute', background: '#123456', userSelect: 'none'}}>
+                <div id="testMove6" style={{height: '30px', width: '30px', backgroundColor: 'blue', boxSizing: 'border-box'}} />
+              </div>
+            </div>
+            <div id="shopDisplay" style={{display: 'none'}}>
+              <div id="shopContainer" className="shopContainer scrollbar">
+              </div>
+            </div>
+            <div id="treasuryDisplay" style={{display: 'none', pointerEvents: 'none'}}>
+              <div className="treasuryDisplay">
+                <img id="treasuryRadar" alt="A" className="treasuryRadar" />
+                <div id="revealer" className="treasuryRevealer" />
+              </div>
+            </div>
+            <div id="gardenDisplay" style={{display: 'none'}}>
+              <div id="gardenScreen" className="gardenDisplay">
+                {/*<div class='gardenRow'>
+							<div class='gardenTile' id='gardenTile[0]' tile='[0]'>
+								<div class='GTBackground'></div>
+								<div class='GTInner'></div>
+								<div class='GTInnerBackground'></div>
+								<div class='GTPlant'></div>
+							</div>
+						</div>*/}
+              </div>
+              <div id="storageScreen" className="gardenDisplay" style={{display: 'none'}}>
+                {/*<div class='gardenRow'>
+							<div class='gardenTile' id='storageTile[0]' tile='[0]'>
+								<div class='GTBackground'></div>
+								<div class='GTInner'></div>
+								<div class='GTInnerBackground'></div>
+								<div class='GTPlant'></div>
+							</div>
+						</div>*/}
+              </div>
+              <div id="almanacScreen" style={{display: 'none', height: '100%'}}>
+                <div className="almanacButtons">
+                  <div id="almanacDepositPlant" className="menuButton" style={{width: '30%', height: '100%', margin: 'auto', fontSize: '20px'}}>Deposit plant.</div>
+                </div>
+                <div className="gardenDisplay almanacPlants">
+                  {/*<div class='gardenRow'>
+								<div class='almanacTile' id='almanacTile[0]' tile='[0]'>
+									<div class='GTBackground'></div>
+									<div class='GTInnerBackground'></div>
+									<div class='GTPlant'></div>
+									<div class='GTText'></div>
+								</div>
+							</div>*/}
+                </div>
+              </div>
+              <div id="almanacSelectionScreen" className="gardenDisplay" style={{flexDirection: 'row'}}>
+                <div id="almanacPlantDisplay" className="almanacLeft">
+                  <div id="almanacSelectedTile" className="almanacTile V2">
+                    <div className="GTBackground" />
+                    <div className="GTInner" />
+                    <div className="GTInnerBackground noPointer" />
+                    <div className="GTPlant noPointer" />
+                    <div className="GTText" />
+                  </div>
+                  <hr />
+                  <div className="progressBar">
+                    <div className="progressBarInner">
+                      <span className="textSmall">0%</span>
+                    </div>
+                  </div>
+                  <span id="almanacKnowledgeText" className="textSmall">0</span>
+                  <hr />
+                  <div id="almanacAddAllKnowledge" className="almanacKnowledgeButton">Add all (0) Knowledge</div>
+                  <div id="almanacAdd1Knowledge" className="almanacKnowledgeButton">Add 1 Knowledge</div>
+                </div>
+                <div id="almanacPlantDescription" className="almanacRight" />
+              </div>
+            </div>
+            <div id="dungeonDisplay" className="display" style={{display: 'none'}}>
+              <div id="dungeonScreen" className="dungeonScreen" />
+              <div id="combatScreen" className="full">
+                <div id="combatDisplay" className="combatDisplay">
+                  <div id="playerDisplay" className="combatInfo">
+                    <div id="playerStats" className="combatInfoInner">
+                      <span id="playerName" className="dungeonName">@</span>
+                      <div id="playerHealth" className="healthBar">
+                        <div className="healthBarInner" style={{backgroundColor: '#AA0000'}} />
+                        <div className="healthBarText" />
+                      </div>
+                      <div id="playerStress" className="healthBar">
+                        <div className="healthBarInner" style={{backgroundColor: '#223322'}} />
+                        <div className="healthBarText" />
+                      </div>
+                    </div>
+                  </div>
+                  <div id="enemyDisplay" className="combatInfo">
+                    <div id="enemyStats" className="combatInfoInner">
+                      <span id="enemyName" className="dungeonName" />
+                      <div id="enemyHealth" className="healthBar">
+                        <div className="healthBarInner" style={{backgroundColor: '#AA0000'}} />
+                        <div className="healthBarText" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="combatLog" className="full">
+                </div>
+              </div>
+              <div id="inventoryScreen" className="full">
+                <div id="inventoryTop" className="inventoryTop">
+                  <div id="innerTop" style={{height: '90%'}}>
+                    <div>
+                      <div className="background" style={{backgroundColor: '#222222'}} />
+                      <div id="forgeDisplay" className="forgeDisplay">
+                        <div id="forgeInner">
+                          <div className="forgeEquipment">
+                            <div id="forgeEquipmentIcon" className="forgeEquipmentIcon" />
+                            <div className="forgeEquipmentText" />
+                          </div>
+                          {/*<div class="forgeInner" tile='[common]'>
+												<div id="forgeEquipmentText" class="forgeEquipmentText"></div>
+											</div>*/}
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="background" style={{backgroundColor: '#555555'}} />
+                      <div id="equipmentDisplay">
+                        <div id="equipmentWeapons" className="equipmentWeapons">
+                          <div className="dungeonEquipmentSlot" type="weaponUp" />
+                          <div className="dungeonEquipmentSlot" type="weaponRight" />
+                          <div className="dungeonEquipmentSlot" type="weaponLeft" />
+                          <div className="dungeonEquipmentSlot" type="weaponDown" />
+                        </div>
+                        <div id="equipmentArmor" className="equipmentArmor">
+                          <div className="dungeonEquipmentSlot" type="armorHead" />
+                          <div className="dungeonEquipmentSlot" type="armorChest" />
+                          <div className="dungeonEquipmentSlot" type="armorArms" />
+                          <div className="dungeonEquipmentSlot" type="armorLegs" />
+                        </div>
+                        <div id="equipmentAcc" className="equipmentAcc">
+                          {/*<div class='dungeonEquipmentSlot' type='acc[0]'></div>*/}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="equipmentOptions" className="equipmentOptions">
+                    <div id="invForgeSwap" className="menuButton V2">&lt;- To forge</div>
+                    <div id="invShowCombat" className="menuButton V2">Show combat equipment.</div>
+                    <div id="forgeShowBase" className="menuButton V2">Show max stats.</div>
+                  </div>
+                </div>
+                <div id="inventoryBottom" className="inventoryBottom">
+                  {/*<div class='dungeonInventorySlot' tile='[0]'></div>*/}
+                </div>
+              </div>
+            </div>
+            <div id="starsDisplay" className="display" style={{display: 'none'}}>
+              <div id="starsMain" className="starBG" style={{width: '100%', height: '100%'}}>
+                <svg style={{width: '100%', height: '100%'}}>
+                  <line id="starsMainLine" style={{display: 'none'}} stroke="white" x1="50%" y1="50%" strokeWidth="1vh">
+                  </line>
+                </svg>
+                <div id="ascendWarning" className="ascendWarning">Click another star to ascend.<br /><span style={{color: '#AA0000'}}>Warning. You will lose all progress earned up this point.</span><br />But in turn, you will gain crystals to spend on upgrades from the selected star.<br />To cancel. Click the big star again.</div>
+                <div id="ascendStar" className="bigStar" />
+                {/*<div class='mainStar starhoverBorder' style='position:absolute;' id='mainStar[0]' style='background-image:[url]; left:[10%]; top:[10%];'></div>*/}
+              </div>
+              {/*<div id='starScreen[0]' class='starBG' style='width:[300%]; height:[300%]; left:[-100%]; top:[-100%]; background-size:[30% 30%]; display:none;'>
+						<div class='starSVG'>
+							<svg>
+								<line x1='[40vh]' y1='[30vh]' x2='[60vh]' y2='[50vh]' stroke='[#777777]' stroke=width='[1vh]' from='[starUpgrade1]' to='[starUpgrade2]'/>
+							</svg>
+						</div>
+						
+						<div id='starUpgrade0' class='starUpgrade' style='left:[30%]; top:[40%];'>
+							<div class='subStar starhoverBorder' undraggable=1></div>
+							<div class='purchaseCount'>[0/10]</div>
+						</div>
+					</div>*/}
+            </div>
+            <div id="statsDisplay" style={{display: 'none'}}>
+              <div id="statsMain" />
+              <div id="statsBreakdown" />
+              <div id="statsFeatureBreakdown" />
+            </div>
+          </div>
+        </div>
+        <div id="Tooltip" className="tooltip" style={{display: 'none', pointerEvents: 'none'}} />
+        <div id="temp" style={{visibility: 'hidden', position: 'absolute', width: '100%', height: '100%', zIndex: -9999}}>?</div>

@@ -1,0 +1,17 @@
+{
+    "stat_tickPower":"Energizer Power generation",
+    "stat_damage":"Damage",
+    "stat_armor":"Armor",
+    "stat_gardenTile": "Garden Tiles",
+    "stat_harvestPower":"Harvested Power",
+    "stat_starPower":"Star Power",
+    "harvest_stat_power":"Power",
+    "harvest_stat_knowledge":"Knowledge",
+    "res_power":"Power",
+    "res_knowledge":"Knowledge",
+    "res_greenPower":"Green Power",
+    "res_redPower":"Red Power",
+    "res_grayPower":"Gray Power",
+    "res_bluePower":"Blue Power",
+    "res_yellowPower":"Yellow Power"
+}
