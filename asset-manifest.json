@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SolarStudies/static/css/main.6068c8ce.css",
+    "main.js": "/SolarStudies/static/js/main.0822b3a0.js",
+    "index.html": "/SolarStudies/index.html",
+    "main.6068c8ce.css.map": "/SolarStudies/static/css/main.6068c8ce.css.map",
+    "main.0822b3a0.js.map": "/SolarStudies/static/js/main.0822b3a0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6068c8ce.css",
+    "static/js/main.0822b3a0.js"
+  ]
+}
