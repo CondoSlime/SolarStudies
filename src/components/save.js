@@ -52,7 +52,7 @@ export function saveGame(){
 }
 
 export function loadGame(){
-    const save = JSON.parse(lzString.decompressFromBase64(window.localStorage.getItem("solarStudies")));
+    const save = JSON.parse(lzString.decompressFromBase64(window.localStorage.getItem("solarStudies")) || "[]");
     if(save["resources"]){
         for(let [index, entry] of Object.entries(save["resources"])){
             if(global["resources"][index]){

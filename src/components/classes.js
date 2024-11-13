@@ -608,13 +608,11 @@ export class energizer{
 			entry["stats"] = {};
 			if(entry["filled"]){
 				const module = entry["module"]; //contains the module (class object) that a tile is referring to
-				console.log(module);
 				module["count"]++;
 				entry["stats"]["power"] = module["basePower"];
 				for(const index2 of module["modifiers"]){
 					if(index2 && this["allModifiers"][index2]["effect"]){
 						for(const [index3, entry3] of Object.entries(this["allModifiers"][index2]["effect"])){
-							console.log("", entry, index2, "", index3, entry3);
 							entry["stats"][index3] = entry["stats"][index3] || 0;
 							entry["stats"][index3] += entry3;
 						}
